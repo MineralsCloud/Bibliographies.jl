@@ -3,6 +3,9 @@ uuid = "ff3b85d1-8851-4600-9a9c-f86dbfccd463"
 authors = ["Qi Zhang <singularitti@outlook.com>"]
 version = "0.1.0"
 
+[deps]
+Parameters = "d96e819e-fc66-5662-9728-84c9c7592b0a"
+
 [compat]
 julia = "1"
 
