@@ -17,31 +17,15 @@ end
 abstract type BibliographyEntry end
 
 @with_kw struct Article <: BibliographyEntry
-    address::String
-    annote::String
     author::Person
-    booktitle::String
-    chapter::Int
-    crossref::Int
     doi::String = ""
-    edition::VersionNumber
-    editor::Person
-    howpublished::Symbol
-    institution::String
     journal::String
-    key::String = ""
     month::Month = Month(-1)
-    note::String = ""
     number::Int = -1
-    organization::String
     pages::NTuple{2,Int} = (-1, -1)
-    publisher::String
-    school::String
-    series::Int
     title::String
-    type::Symbol
-    volume::Int
-    year::Year
+    volume::Int = -1
+    year::Year = Year(-1)
 end
 
 @with_kw struct Book <: BibliographyEntry
