@@ -19,9 +19,9 @@ abstract type BibliographyEntry end
 
 @with_kw struct Article <: BibliographyEntry
     author::Person
-    doi::String = ""
     journal::String
     month::Month = Month(-1)
+    note::String = ""
     number::Int = -1
     pages::NTuple{2,Int} = (-1, -1)
     title::String
