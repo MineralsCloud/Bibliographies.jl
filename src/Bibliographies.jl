@@ -4,6 +4,7 @@ using Dates: Month, Year
 using Parameters: @with_kw
 
 export Person, BibliographyEntry, Article
+export all_fields, ignored_fields
 
 struct Person
     first_names::Vector{String}
@@ -391,5 +392,39 @@ end
     volume::Int
     year::Year
 end
+
+function all_fields()
+    return Set((
+        :address,
+        :annote,
+        :author,
+        :booktitle,
+        :chapter,
+        :crossref,
+        :doi,
+        :edition,
+        :editor,
+        :howpublished,
+        :institution,
+        :journal,
+        :key,
+        :month,
+        :note,
+        :number,
+        :organization,
+        :pages,
+        :publisher,
+        :school,
+        :series,
+        :title,
+        :type,
+        :volume,
+        :year,
+    ))
+end # function all_fields
+
+function ignored_fields(T::Type{<:BibliographyEntry})
+    return setdiff(all_fields(), fieldnames(T))
+end # function ignored_fields
 
 end # module
