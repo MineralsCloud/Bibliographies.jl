@@ -394,7 +394,7 @@ end
 end
 
 function all_fields()
-    return Set((
+    return (
         :address,
         :annote,
         :author,
@@ -420,7 +420,7 @@ function all_fields()
         :type,
         :volume,
         :year,
-    ))
+    )
 end # function all_fields
 
 function ignored_fields(T::Type{<:BibliographyEntry})
