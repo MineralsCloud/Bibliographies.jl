@@ -12,7 +12,6 @@ struct Person
     prelast_names::Vector{String}
     last_names::Vector{String}
     lineage_names::Vector{String}
-    errors::Vector
 end
 
 abstract type BibliographyEntry end
