@@ -1,18 +1,12 @@
 module Bibliographies
 
 using Dates: Month, Year
+
+using BibTeXFormat: Person
 using Parameters: @with_kw
 
-export Person, BibliographyEntry, Article
+export BibliographyEntry, Article
 export all_fields, ignored_fields
-
-struct Person
-    first_names::Vector{String}
-    middle_names::Vector{String}
-    prelast_names::Vector{String}
-    last_names::Vector{String}
-    lineage_names::Vector{String}
-end
 
 abstract type BibliographyEntry end
 
