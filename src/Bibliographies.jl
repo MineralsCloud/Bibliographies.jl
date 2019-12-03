@@ -20,13 +20,13 @@ abstract type BibliographyEntry end
 @with_kw struct Article <: BibliographyEntry
     author::Person
     journal::String
+    title::String
+    year::Year
     month::Month = Month(-1)
     note::String = ""
     number::Int = -1
     pages::NTuple{2,Int} = (-1, -1)
-    title::String
     volume::Int = -1
-    year::Year = Year(-1)
 end
 
 @with_kw struct Book <: BibliographyEntry
