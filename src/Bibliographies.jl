@@ -1,5 +1,411 @@
 module Bibliographies
 
-greet() = print("Hello World!")
+using Dates: Month, Year
+using Parameters: @with_kw
+
+export Person, BibliographyEntry, Article
+
+struct Person
+    first_names::Vector{String}
+    middle_names::Vector{String}
+    prelast_names::Vector{String}
+    last_names::Vector{String}
+    lineage_names::Vector{String}
+    errors::Vector
+end
+
+abstract type BibliographyEntry end
+
+@with_kw struct Article <: BibliographyEntry
+    address::String
+    annote::String
+    author::Person
+    booktitle::String
+    chapter::Int
+    crossref::Int
+    doi::String = ""
+    edition::VersionNumber
+    editor::Person
+    howpublished::Symbol
+    institution::String
+    journal::String
+    key::String = ""
+    month::Month = Month(-1)
+    note::String = ""
+    number::Int = -1
+    organization::String
+    pages::NTuple{2,Int} = (-1, -1)
+    publisher::String
+    school::String
+    series::Int
+    title::String
+    type::Symbol
+    volume::Int
+    year::Year
+end
+
+@with_kw struct Book <: BibliographyEntry
+    address::String
+    annote::String
+    author::Person
+    booktitle::String
+    chapter::Int
+    crossref::Int
+    doi::String
+    edition::VersionNumber
+    editor::Person
+    howpublished::Symbol
+    institution::String
+    journal::String
+    key::String
+    month::Month
+    note::String
+    number::Int
+    organization::String
+    pages::NTuple{2,Int}
+    publisher::String
+    school::String
+    series::Int
+    title::String
+    type::Symbol
+    volume::Int
+    year::Year
+end
+
+@with_kw struct Booklet <: BibliographyEntry
+    address::String
+    annote::String
+    author::Person
+    booktitle::String
+    chapter::Int
+    crossref::Int
+    doi::String
+    edition::VersionNumber
+    editor::Person
+    howpublished::Symbol
+    institution::String
+    journal::String
+    key::String
+    month::Month
+    note::String
+    number::Int
+    organization::String
+    pages::NTuple{2,Int}
+    publisher::String
+    school::String
+    series::Int
+    title::String
+    type::Symbol
+    volume::Int
+    year::Year
+end
+
+@with_kw struct Conference <: BibliographyEntry
+    address::String
+    annote::String
+    author::Person
+    booktitle::String
+    chapter::Int
+    crossref::Int
+    doi::String
+    edition::VersionNumber
+    editor::Person
+    howpublished::Symbol
+    institution::String
+    journal::String
+    key::String
+    month::Month
+    note::String
+    number::Int
+    organization::String
+    pages::NTuple{2,Int}
+    publisher::String
+    school::String
+    series::Int
+    title::String
+    type::Symbol
+    volume::Int
+    year::Year
+end
+
+@with_kw struct InBook <: BibliographyEntry
+    address::String
+    annote::String
+    author::Person
+    booktitle::String
+    chapter::Int
+    crossref::Int
+    doi::String
+    edition::VersionNumber
+    editor::Person
+    howpublished::Symbol
+    institution::String
+    journal::String
+    key::String
+    month::Month
+    note::String
+    number::Int
+    organization::String
+    pages::NTuple{2,Int}
+    publisher::String
+    school::String
+    series::Int
+    title::String
+    type::Symbol
+    volume::Int
+    year::Year
+end
+
+@with_kw struct InCollection <: BibliographyEntry
+    address::String
+    annote::String
+    author::Person
+    booktitle::String
+    chapter::Int
+    crossref::Int
+    doi::String
+    edition::VersionNumber
+    editor::Person
+    howpublished::Symbol
+    institution::String
+    journal::String
+    key::String
+    month::Month
+    note::String
+    number::Int
+    organization::String
+    pages::NTuple{2,Int}
+    publisher::String
+    school::String
+    series::Int
+    title::String
+    type::Symbol
+    volume::Int
+    year::Year
+end
+
+@with_kw struct InProceedings <: BibliographyEntry
+    address::String
+    annote::String
+    author::Person
+    booktitle::String
+    chapter::Int
+    crossref::Int
+    doi::String
+    edition::VersionNumber
+    editor::Person
+    howpublished::Symbol
+    institution::String
+    journal::String
+    key::String
+    month::Month
+    note::String
+    number::Int
+    organization::String
+    pages::NTuple{2,Int}
+    publisher::String
+    school::String
+    series::Int
+    title::String
+    type::Symbol
+    volume::Int
+    year::Year
+end
+
+@with_kw struct Manual <: BibliographyEntry
+    address::String
+    annote::String
+    author::Person
+    booktitle::String
+    chapter::Int
+    crossref::Int
+    doi::String
+    edition::VersionNumber
+    editor::Person
+    howpublished::Symbol
+    institution::String
+    journal::String
+    key::String
+    month::Month
+    note::String
+    number::Int
+    organization::String
+    pages::NTuple{2,Int}
+    publisher::String
+    school::String
+    series::Int
+    title::String
+    type::Symbol
+    volume::Int
+    year::Year
+end
+
+@with_kw struct MastersThesis <: BibliographyEntry
+    address::String
+    annote::String
+    author::Person
+    booktitle::String
+    chapter::Int
+    crossref::Int
+    doi::String
+    edition::VersionNumber
+    editor::Person
+    howpublished::Symbol
+    institution::String
+    journal::String
+    key::String
+    month::Month
+    note::String
+    number::Int
+    organization::String
+    pages::NTuple{2,Int}
+    publisher::String
+    school::String
+    series::Int
+    title::String
+    type::Symbol
+    volume::Int
+    year::Year
+end
+
+@with_kw struct Misc <: BibliographyEntry
+    address::String
+    annote::String
+    author::Person
+    booktitle::String
+    chapter::Int
+    crossref::Int
+    doi::String
+    edition::VersionNumber
+    editor::Person
+    howpublished::Symbol
+    institution::String
+    journal::String
+    key::String
+    month::Month
+    note::String
+    number::Int
+    organization::String
+    pages::NTuple{2,Int}
+    publisher::String
+    school::String
+    series::Int
+    title::String
+    type::Symbol
+    volume::Int
+    year::Year
+end
+
+@with_kw struct PhdThesis <: BibliographyEntry
+    address::String
+    annote::String
+    author::Person
+    booktitle::String
+    chapter::Int
+    crossref::Int
+    doi::String
+    edition::VersionNumber
+    editor::Person
+    howpublished::Symbol
+    institution::String
+    journal::String
+    key::String
+    month::Month
+    note::String
+    number::Int
+    organization::String
+    pages::NTuple{2,Int}
+    publisher::String
+    school::String
+    series::Int
+    title::String
+    type::Symbol
+    volume::Int
+    year::Year
+end
+
+@with_kw struct Proceedings <: BibliographyEntry
+    address::String
+    annote::String
+    author::Person
+    booktitle::String
+    chapter::Int
+    crossref::Int
+    doi::String
+    edition::VersionNumber
+    editor::Person
+    howpublished::Symbol
+    institution::String
+    journal::String
+    key::String
+    month::Month
+    note::String
+    number::Int
+    organization::String
+    pages::NTuple{2,Int}
+    publisher::String
+    school::String
+    series::Int
+    title::String
+    type::Symbol
+    volume::Int
+    year::Year
+end
+
+@with_kw struct TechReport <: BibliographyEntry
+    address::String
+    annote::String
+    author::Person
+    booktitle::String
+    chapter::Int
+    crossref::Int
+    doi::String
+    edition::VersionNumber
+    editor::Person
+    howpublished::Symbol
+    institution::String
+    journal::String
+    key::String
+    month::Month
+    note::String
+    number::Int
+    organization::String
+    pages::NTuple{2,Int}
+    publisher::String
+    school::String
+    series::Int
+    title::String
+    type::Symbol
+    volume::Int
+    year::Year
+end
+
+@with_kw struct Unpublished <: BibliographyEntry
+    address::String
+    annote::String
+    author::Person
+    booktitle::String
+    chapter::Int
+    crossref::Int
+    doi::String
+    edition::VersionNumber
+    editor::Person
+    howpublished::Symbol
+    institution::String
+    journal::String
+    key::String
+    month::Month
+    note::String
+    number::Int
+    organization::String
+    pages::NTuple{2,Int}
+    publisher::String
+    school::String
+    series::Int
+    title::String
+    type::Symbol
+    volume::Int
+    year::Year
+end
 
 end # module
