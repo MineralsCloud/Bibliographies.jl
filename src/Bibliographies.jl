@@ -21,6 +21,8 @@ abstract type BibliographyEntry end
     pages::NTuple{2,Int} = (-1, -1)
     volume::Int = -1
 end
+Article(author, journal, title, year) =
+    Article(author = author, journal = journal, title = title, year = year)
 
 @with_kw struct Book <: BibliographyEntry
     address::String
