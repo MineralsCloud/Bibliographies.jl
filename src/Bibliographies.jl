@@ -428,9 +428,9 @@ function ignored_fields(T::Type{<:BibliographyEntry})
 end # function ignored_fields
 
 function expand(d::AbstractDict{Symbol})
-    default = Dict{Symbol,Any}(zip(all_fields(), [nothing for _ in 1:length(all_fields())]))
+    default = Dict{Symbol,String}(zip(all_fields(), ["" for _ in 1:length(all_fields())]))
     for k in keys(default)
-        default[k] = get(d, k, nothing)
+        default[k] = get(d, k, "")
     end
     return default
 end # function expand
@@ -439,9 +439,9 @@ expand(d::AbstractDict{<:AbstractString}) = expand(Dict(Symbol(k) => v for (k, v
 function make_table(str::String)
     bib = Bibliography(str)
     citations = map(values, values(bib.citations))
-    df = DataFrame(Dict(zip(all_fields(), (nothing for _ in 1:length(all_fields())))))
+    df = DataFrame()
     for citation in citations
-        append!(df, DataFrame(expand(citation.data)))
+        append!(df, expand(citation.data) |> DataFrame)
     end
     return df
 end # function make_table
