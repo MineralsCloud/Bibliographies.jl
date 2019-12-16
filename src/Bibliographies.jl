@@ -2,8 +2,10 @@ module Bibliographies
 
 using Dates: Month, Year
 
-using BibTeXFormat: Person
+using BibTeXFormat: Person, Bibliography
 using Parameters: @with_kw
+
+import BibTeXFormat
 
 export BibliographyEntry, Article
 export all_fields, ignored_fields
@@ -388,6 +390,33 @@ end
     year::Year
 end
 
+struct GeneralBibliographyEntry <: BibliographyEntry
+    address::String
+    annote::String
+    author::Person
+    booktitle::String
+    chapter::Int
+    crossref::Int
+    doi::String
+    edition::VersionNumber
+    editor::Person
+    howpublished::Symbol
+    institution::String
+    journal::String
+    key::String
+    month::Month
+    note::String
+    number::Int
+    organization::String
+    pages::NTuple{2,Int}
+    publisher::String
+    school::String
+    series::Int
+    title::String
+    type::Symbol
+    volume::Int
+    year::Year
+end
 function all_fields()
     return (
         :address,
