@@ -3,12 +3,13 @@ module Bibliographies
 using Dates: Month, Year
 
 using BibTeXFormat: Person, Bibliography
+using DataFrames: DataFrame
 using Parameters: @with_kw
 
 import BibTeXFormat
 
 export BibliographyEntry, Article
-export all_fields, ignored_fields
+export all_fields, ignored_fields, expand, make_table
 
 abstract type BibliographyEntry end
 
@@ -434,5 +435,15 @@ function expand(d::AbstractDict{Symbol,Any})
     return default
 end # function expand
 expand(d::AbstractDict) = Dict(Symbol(k) => v for (k, v) in d)
+
+function make_table(str::String)
+    bib = Bibliography(str)
+    citations = map(values, values(bib.citations))
+    df = DataFrame(Dict(zip(all_fields(), (nothing for _ in 1:length(all_fields())))))
+    for citation in citations
+        append!(df, DataFrame(expand(citation.data)))
+    end
+    return df
+end # function make_table
 
 end # module
