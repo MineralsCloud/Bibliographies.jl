@@ -417,34 +417,9 @@ struct GeneralBibliographyEntry <: BibliographyEntry
     volume::Int
     year::Year
 end
+
 function all_fields()
-    return (
-        :address,
-        :annote,
-        :author,
-        :booktitle,
-        :chapter,
-        :crossref,
-        :doi,
-        :edition,
-        :editor,
-        :howpublished,
-        :institution,
-        :journal,
-        :key,
-        :month,
-        :note,
-        :number,
-        :organization,
-        :pages,
-        :publisher,
-        :school,
-        :series,
-        :title,
-        :type,
-        :volume,
-        :year,
-    )
+    return fieldnames(GeneralBibliographyEntry)
 end # function all_fields
 
 function ignored_fields(T::Type{<:BibliographyEntry})
