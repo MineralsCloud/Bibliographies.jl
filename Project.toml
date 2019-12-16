@@ -6,6 +6,7 @@ version = "0.1.0"
 [deps]
 BibTeX = "7b0aa2c9-049f-5cec-894a-2b6b781bb25e"
 BibTeXFormat = "81872a04-5f92-5ce1-a30b-528d3f2b00a0"
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
 Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
 Parameters = "d96e819e-fc66-5662-9728-84c9c7592b0a"
 
