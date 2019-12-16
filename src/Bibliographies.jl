@@ -427,14 +427,14 @@ function ignored_fields(T::Type{<:BibliographyEntry})
     return setdiff(all_fields(), fieldnames(T))
 end # function ignored_fields
 
-function expand(d::AbstractDict{Symbol,Any})
-    default = Dict(zip(all_fields(), [nothing for _ in 1:length(all_fields())]))
+function expand(d::AbstractDict{Symbol})
+    default = Dict{Symbol,Any}(zip(all_fields(), [nothing for _ in 1:length(all_fields())]))
     for k in keys(default)
         default[k] = get(d, k, nothing)
     end
     return default
 end # function expand
-expand(d::AbstractDict) = Dict(Symbol(k) => v for (k, v) in d)
+expand(d::AbstractDict{<:AbstractString}) = expand(Dict(Symbol(k) => v for (k, v) in d))
 
 function make_table(str::String)
     bib = Bibliography(str)
