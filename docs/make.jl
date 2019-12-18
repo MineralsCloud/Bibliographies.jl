@@ -1,15 +1,19 @@
-using Documenter, Bibliographies
+using Bibliographies
+using Documenter
 
 makedocs(;
     modules=[Bibliographies],
-    format=Documenter.HTML(),
+    authors="Qi Zhang <singularitti@outlook.com>",
+    repo="https://github.com/MineralsCloud/Bibliographies.jl/blob/{commit}{path}#L{line}",
+    sitename="Bibliographies.jl",
+    format=Documenter.HTML(;
+        prettyurls=get(ENV, "CI", "false") == "true",
+        canonical="https://MineralsCloud.github.io/Bibliographies.jl",
+        assets=String[],
+    ),
     pages=[
         "Home" => "index.md",
     ],
-    repo="https://github.com/MineralsCloud/Bibliographies.jl/blob/{commit}{path}#L{line}",
-    sitename="Bibliographies.jl",
-    authors="Qi Zhang <singularitti@outlook.com>",
-    assets=String[],
 )
 
 deploydocs(;

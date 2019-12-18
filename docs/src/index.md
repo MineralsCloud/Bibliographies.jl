@@ -1,4 +1,8 @@
-# Bibliographies.jl
+```@meta
+CurrentModule = Bibliographies
+```
+
+# Bibliographies
 
 ```@index
 ```
