@@ -2,7 +2,7 @@
 
 [![Build Status](https://github.com/MineralsCloud/Bibliographies.jl/workflows/CI/badge.svg)](https://github.com/MineralsCloud/Bibliographies.jl/actions)
 [![Build Status](https://travis-ci.com/MineralsCloud/Bibliographies.jl.svg?branch=master)](https://travis-ci.com/MineralsCloud/Bibliographies.jl)
-[![Build Status](https://ci.appveyor.com/api/projects/status/github/MineralsCloud/Bibliographies.jl?svg=true)](https://ci.appveyor.com/project/MineralsCloud/Bibliographies-jl)
+[![Build Status](https://ci.appveyor.com/api/projects/status/github/singularitti/Bibliographies.jl?svg=true)](https://ci.appveyor.com/project/singularitti/Bibliographies-jl)
 [![Build Status](https://cloud.drone.io/api/badges/MineralsCloud/Bibliographies.jl/status.svg)](https://cloud.drone.io/MineralsCloud/Bibliographies.jl)
 [![Build Status](https://api.cirrus-ci.com/github/MineralsCloud/Bibliographies.jl.svg)](https://cirrus-ci.com/github/MineralsCloud/Bibliographies.jl)
 [![Coverage](https://codecov.io/gh/MineralsCloud/Bibliographies.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/MineralsCloud/Bibliographies.jl)
